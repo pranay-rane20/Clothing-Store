@@ -1,0 +1,2649 @@
+************************************************************************************************
+                                React Js : Essentials- Everything you need to Learn
+************************************************************************************************
+
+
+jab website par khub sare change hote hai to khoob sara repaint hota hai wo bhi wo elements jo badale bhi nahi, aur ye website ko slow down kar deta hai is cheej se bachane ke liye facebook ne react creation kiya
+
+virtual dom sirf wo part re3paint karta he jo change hua ho jaha change karna anivarya ho
+
+// Arrays objects destructuring import and export
+
+// MaP FUNCTIONS arrow functions (Implicit return) spread operator
+
+// arrays already padh chuke
+
+// react js me ek state naam ki cheez milegi uss bande ko aap mutate nahi kar sakr matlab ki directly uski valur=e ko hata nhi sakte
+
+// state is immutable
+
+// aur AB JO PADHENGE  wo ye hoga ki state ko mmutable way me kaise update karen
+
+var state = [1,2,3,4,5]
+var copy = [...state]
+// they are not copied by reference but by values
+
+var state = {name:"harsh", age:24}
+var copy = {...state}
+
+copied.name = "harshita"
+
+state = copy;
+
+// destructuring
+
+var obj = {name:"harsh", age:25};
+const {age} = obj;
+
+// now we can use age by its name only we doesn't have to accesss the object repeatedly
+
+
+var obj = {
+    name:"string",
+    social:{
+        facebook:{
+            first:"hahaha",
+            sec:"akdfjh"
+        },
+    },
+};
+
+const {sec} = obj.social.facebook
+
+same happens with array with [] brackets
+
+it is nothing but destructuring
+
+var arr = [12, functions(){}, 25]
+
+const [chacha,,halua] = arr;
+
+
+// Import and Export
+
+// hum log components banate he , component matlab page ka hissa, navbar, sidebar, cart, landing, ab dikkat ye aatiu he ki har hissa alg alg compinent he aur componentys ko ham, alag alag files me rakhte he, to innko last me jodna bhi padta he, jodne ke liye use hota he import and export
+
+navbar - export
+
+sidebar - export
+
+cart - export
+ main - import navbar, sidebar, cart
+
+ function Cart(){
+
+ }
+export default Cart;
+
+// import Cart from "./script2"
+
+export function Cart(){
+
+ }
+
+export function adb(){
+
+ }
+
+import {Cart, adb} from "./script2"
+
+
+ // Arrow function
+
+const abcd = () => {
+
+}
+abcd();
+
+// arrow function with one parameter
+const abcd = val => {
+
+}
+
+abcd(val);
+
+// arrow function with implicit return 
+const abcd = () => 12;
+console.log(abcd() + 1)
+
+const abcd = () => "harsh";
+console.log("hey " + abcd())
+
+const abcd = () => ({name: 'abcd, age:12})
+console.log(abcd())
+
+// Map filter
+
+map-filter,  dono hi array par chalte he aur dono ka kaam he arrtay par kuch perform karna and "ek naya array return karna"
+
+map - har element kuch par karo and naye array me rakho
+// forEach ke ander aata he function andf function ke ander aata h values
+
+var arr = [1,2,3,4,5,6,7,8]
+arr.map(val => {
+    return val*2;
+})
+
+arr.map(val => val*2)
+// Map ke ander return karne ki wajah swe hi elements naye array  me place hote he
+
+// state ek array he usme numbers he and aapko har number ko +1 karna he
+
+var state = [1,2,3,4,5];
+
+const ans = state.map(elem => elem+1);
+state = ans;
+
+//Map
+
+que: ek array hai sare numbers jo ki 5 se bade ho unme 5 jod dena and baki numbers waise ke wase return karo naye array me
+
+var state = [11,22,3,4,5,6,7,8,9,10,11,12,13,14];
+state.map(elem => elem > 5 ? elem+5: elem);
+
+// map aur filter me ek hi farak he mki map sare elements lautata her matlab count kam nhi karta aur filtre kam kar deta he 
+
+// jab original array ka size kam na karna ho toh waha map use hota he 
+
+// aur jab original arry ka size kam karna ho toh filtre use hota he
+
+
+// Filter
+var arr = [1,2,3,4,5,6,7,8,9]
+
+const ans = arr.filter(elem => true);
+const ans = arr.filter(elem => elem>4);
+
+var arr = [
+    {name : "harsh", gender :"male"},
+    {name : "pranay", gender :"female"},
+    {name : "rahul", gender :"female"}
+
+]
+
+arr.filter(elem => elem.gender === 'male');
+
+
+************************************************************************************************
+                                Section 1: System Setup and Basics
+************************************************************************************************
+
+
+// SETUP
+
+1) Tabnine
+2) Prettier
+3) node
+4) vite vs cra
+
+
+// component
+pahla component banana
+code samjhna hai chal kaise rha he
+
+import React from "react";
+
+function App(){
+  return(
+    <h1>hey</h1>
+  )
+}
+
+// hame sirf ek file se lena dena he script2sare component jese ki nav section button sare compinent file me rehte he 
+sare components App js ke ander aate he
+app.js main.js ke ander jata he aur fir jo bhi index me hota he wo body tag me add ho jata he
+
+export default App;
+
+
+************************************************************************************************
+                                Section 2: Building Components
+************************************************************************************************
+
+  
+react
+
+// COMPONENTS , STATE, PROPS 
+
+
+import React from "react";
+
+function Navbar() {
+    return <h1>Navbar</h1>;
+}
+
+export default Navbar;
+
+import React from "react";
+
+function Hero(){
+    return(
+        <div>Hero</div>
+    )
+}
+
+export default Hero;
+
+import React from "react";
+
+function SecondPage(){
+    return(
+        <div>SecondPage</div>
+    )
+}
+
+export default SecondPage;
+
+import React from "react";
+import Navbar from "./Components/Navbar";
+import Hero from "./Components/hero";
+import SecondPage from "./Components/SecondPage";
+
+function App(){
+  return(
+    <div>
+      <Navbar></Navbar>
+      <Hero></Hero>
+      <SecondPage></SecondPage>
+    </div>
+    
+  )
+}
+
+export default App;  
+
+
+************************************************************************************************
+                                Section 3:Components Reusability
+************************************************************************************************
+
+
+// App main file me kya hota he ki hame already pata he ki koi bhi function me return ke uper jo bhi task karte he wo phle execute hota he toh actually me ham bhi wahi karte he jese demo
+
+
+import React from "react";
+import Card from "./Components/Card";
+
+function App(){
+  console.log("hello world");
+  return(
+    <div>
+      
+    </div>
+    
+  )
+}
+
+export default App;  
+
+// isme phle print hoga uske baad jo bhi return karna he wo return hoga
+// EK aur example
+
+import React from "react";
+import Card from "./Components/Card";
+
+function App(){
+  const name = "harsh";
+  const number = 45;
+  return(
+    <div>
+      {name} {number}
+    </div>
+    
+  )
+}
+
+export default App
+// react me ham {}lagaker koi bhi variable ka use html document me kar sakte he
+
+import React from "react";
+import Card from "./Components/Card";
+
+function App(){
+  const data = ["harsh", "rahul", "vishal"];
+  return(
+    <div>
+      {data.map(() => <h1>hey</h1>)}
+      {/* It creates 3 h1 into the div tag because the loop runs 3 times for data array */}
+    </div>
+    
+  )
+}
+
+export default App;  
+
+// Key prop Warning
+
+// Ye Warning isiliye aati he kyuki React jo he wo ek virtual DOM create karta he aur usse har element ke bare me pata hona chahiye ki wo ek unique element he , uper wale code me jitne bhi h1 ban rhe the wo sare same the wo hame is solution har element ko ek unique element key dekr nikalna hoga jese
+
+import React from "react";
+import Card from "./Components/Card";
+
+function App(){
+  const data = ["harsh", "rahul", "vishal"];
+  return(
+    <div>
+      {data.map((value, index) => <h1 key={index}>hey</h1>)}
+      {/* Remove Key prop warning */}
+      {/* It creates 3 h1 into the div tag because the loop runs 3 times for data array */}
+    </div>
+    
+  )
+}
+
+export default App;  
+
+// One Practice example
+
+import React from "react";
+import Card from "./Components/Card";
+
+function App(){
+  const data = ["Harsh", "Pranay","Rahul","Vishal"];
+  return(
+    <div>
+      {data.map((elem, index)=>(
+        <div key={index} className="px-3 py-4 bg-zinc-300 rounded-md w-fit">
+          {elem}
+        </div>
+      ))}
+    </div>
+    
+  )
+}
+
+export default App;  
+
+// Small Card Project 
+
+import React from "react";
+function Card(){
+    const data = [
+        {image:'https://images.unsplash.com/photo-1633174524778-61a18ee54490?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFtYXpvbiUyMGJveHxlbnwwfHwwfHx8MA%3D%3D', name:"Amazon Basics", description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, porro!"},
+        {image:'https://i.pinimg.com/474x/42/44/ba/4244ba005835e55afd37019bcfb287f8.jpg', name:"Daily Objects", description:"Lorem ipsum dolor sit amet consectet repeat desc tempor"},
+        {image:'https://i.pinimg.com/564x/e4/9b/0a/e49b0aad627071b9298aa2e7441eda14.jpg', name:"Apple", description:"Lorem ipsum dolor sit amet consectet repeat desc tempor non"}
+    ]
+    return(
+        <div className="w-full h-screen flex items-center justify-center gap-10 bg-zinc-200">
+            {data.map((elem, index)=>(
+                <div key={index} className="w-52 bg-zinc-100 rounded-md overflow-hidden">
+                <div className="w-full h-32 bg-zinc-300">
+                    <img className="w-full h-full object-cover" src={elem.image} alt="" />
+                </div>
+                    <div className="w-full px-3 py-4">
+                        <h2 className="font-semibold">{elem.name}</h2>
+                        <p className="text-xs mt-3">{elem.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+export default Card;
+
+// Pehle ek Component banao uske baad har ek Component ko Map kardo uske baar unka data configure kardo
+
+
+//Fragments
+
+// ham jab bhi App.jsx wali file se ek se jyda elements return karte he toh hame unhe ek element me wrap up karna padta he jise ham div me wrap karte he ab agar ham nhi chahte ki ham koi naya element banay aur fir faltu ka jhanjhat karke usse style kare toh ye ham fragmants se kar sakte he 
+
+<>Iske beech me jo bhi hoga wo as a singe element treat kiya jyga aur direct jake render ho jyga</>
+
+function App(){
+  return(
+    <> //Fragments
+      <Card></Card>
+      <h1>Hey</h1>
+    </>
+    
+  )
+}
+
+************************************************************************************************
+                                Section 4:Conditional Rendering
+************************************************************************************************
+// 
+
+// Conditional rednering me kya hota he ki agar hame hard coded deta nahi pass karna hamare document me toh ham conditional rednering kar sakte he
+
+// jese ek example ko lete he ki hame ek button show karni he ki abhi hamara product in stock he ya out of stock he toh ham yaha hamare object me ek property set kar sakte he instock jo ki ya toh true ya false hogi, toh agar true he toh in stock print kardo nhi toh out of stock print kardo
+
+// aur agar hame backgroound color bhi change karna he toh ham classes ko bhi dynamic de sakte he es6 wale brackets kholker
+
+// code for explanation
+
+import React from "react";
+function Card(){
+    const data = [
+        {image:'https://images.unsplash.com/photo-1633174524778-61a18ee54490?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFtYXpvbiUyMGJveHxlbnwwfHwwfHx8MA%3D%3D', name:"Amazon Basics", description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, porro!", inStock : true},
+        {image:'https://i.pinimg.com/474x/42/44/ba/4244ba005835e55afd37019bcfb287f8.jpg', name:"Daily Objects", description:"Lorem ipsum dolor sit amet consectet repeat desc tempor", inStock : false},
+        {image:'https://i.pinimg.com/564x/e4/9b/0a/e49b0aad627071b9298aa2e7441eda14.jpg', name:"Apple", description:"Lorem ipsum dolor sit amet consectet repeat desc tempor non", inStock: false}
+    ]
+    return(
+        <div className="w-full h-screen flex items-center justify-center gap-10 bg-zinc-900">
+            {data.map((elem, index)=>(
+                <div key={index} className="w-52 bg-zinc-100 rounded-md overflow-hidden">
+                <div className="w-full h-32 bg-zinc-300">
+                    <img className="w-full h-full object-cover" src={elem.image} alt="" />
+                </div>
+                    <div className="w-full px-3 py-4">
+                        <h2 className="font-semibold">{elem.name}</h2>
+                        <p className="text-xs mt-3">{elem.description}</p>
+                        <button className={`px-4 py-1 ${elem.inStock ? 'bg-blue-600' : 'bg-red-600'} text-xs rounded text-zinc-100 mt-3`}>
+                            {elem.inStock ? "In Stock" : "Out of Stock"}
+                        </button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+export default Card;
+
+
+
+
+// Handeling Events
+
+
+
+import React from "react";
+
+function Card(){
+
+    const data = [
+        {name: "Mahiya ve", description:"The Mahiya ve is most hello  important song to listen"},
+        {name: "Ishaq", description:"The Ishaq is the second most world important song"},
+        {name: "Dil Deewana", description:"The Dil Deewana is the fourth most important song"},
+        {name: "Chahee Tujhe", description:"The Chahee Tujhe is the fifth most important song"},
+    ];
+
+    return(
+        <div className="w-full h-screen bg-zinc-400 flex flex-col gap-4 justify-center items-center">
+            {data.map((item, index) => (
+                <div className="song w-90 px-3 py-2 bg-zinc-100 rounded-md">
+                <h3 className="font-semibold text-xl">{item.name}</h3>
+                <p className="text-xs mt-2">{item.description}</p>
+                <button className="px-2 py-1 bg-blue-400 text-xs font-semibold text-zinc-100 rounded mt-3">Download now</button>
+            </div>
+            ))}
+        </div>
+    )
+}
+
+export default Card;
+
+
+// Ye ek simple code he jo ki cards banaker dega for downloading songs
+// ********************************
+// Ab agar hame Download karna he aur hame listener lagana he hamari download button par toh ham ab yaha par js ki tarah query Selector ka use nahi karte kyuki ye actual DOM nahi hota he yr react ka alag DOM hota he To ham wahi par sare listener "onClick", "onMouseover" etc. deker lagate he
+
+// Ab jo listener likha he hamne wo bhi same js wale addEventListener ki tarah hi ek function accept karta he aur event perform hone par usse chala deta he
+
+
+// example
+<button onClick={() => {alert("Downloading... Pathak ji")}} className="px-2 py-1 bg-blue-400 text-xs font-semibold text-zinc-100 rounded mt-3">Download now</button>
+
+// Ab ye jo upere wali line he isme jo function likha he wo agar baDA HUa toh sari gitch pitch ho jygi isiliye ham function ko uper bana dete he aur bas yaha par uska naam likh dete he
+
+// Ek aur sabse important baat yaha hame function kaa naam bas likhna he waha () ye wale brackets nhi lagane he kyuki () ye wale brackets lagane se hamara function phle hi chal jyga
+
+// Example
+
+import React from "react";
+
+function Card(){
+
+    const handleClickDownload = ()=>{
+        alert("Downloading... Pathak jii...")}
+
+    const data = [
+        {name: "Mahiya ve", description:"The Mahiya ve is most hello  important song to listen"},
+        {name: "Ishaq", description:"The Ishaq is the second most world important song"},
+        {name: "Dil Deewana", description:"The Dil Deewana is the fourth most important song"},
+        {name: "Chahee Tujhe", description:"The Chahee Tujhe is the fifth most important song"},
+    ];
+
+    return(
+        <div className="w-full h-screen bg-zinc-400 flex flex-col gap-4 justify-center items-center">
+            {data.map((item, index) => (
+                <div className="song w-90 px-3 py-2 bg-zinc-100 rounded-md">
+                <h3 className="font-semibold text-xl">{item.name}</h3>
+                <p className="text-xs mt-2">{item.description}</p>
+                <button onClick={handleClickDownload} className="px-2 py-1 bg-blue-400 text-xs font-semibold text-zinc-100 rounded mt-3">Download now</button>
+            </div>
+            ))}
+        </div>
+    )
+}
+
+export default Card;
+
+
+************************************************************************************************
+                                Section 5: Managing state and Understanding the state Hook
+************************************************************************************************
+
+
+// Managing state and Understanding the state Hook
+
+
+// state ek data hota he, react iss data ka khayal rakhta he jab bhi ye data change hota he react page ko update karta he
+
+// state koi bhi data ho sakta he jese ki score = 0
+
+useState(0)
+
+// maan lete he aapke game me score by default 0 se shuru hota he and future me wo score badhega by 10, aur aapko page pr show bhi karna he jab score badhe, to uss case me aapka score variable ek state me rakhna jaruri he, kyuki react sirf use chnange karta he jo state me hota he 
+
+// useState ko use karne ke liye pehle hame isse import karna hota he 
+
+// example
+
+import React, { useState } from "react";
+
+ab jo useState method he wo hame ek array return karti he jisse ham ek variable me save kar sakte he
+
+  const ans = useState(true);
+  console.log(ans[0]);
+
+// ab useState ke paas sirf 2 index ka hi array hota he jisme pehle index par wo value hoti he jo ham usse dete he
+
+aur iske 2nd index par hota he ek function aur wo iss value ko update karta he jo ham already usse dete he
+
+  const [a,b] = useState(0);
+aese ham unn dono ki value ko bahar nikal sakte he isse Array destructuring kehte he
+
+// ab hame inka naam aese dena he ki naam sense kare
+
+
+import React, { useState } from "react";
+import Card from "./Components/Card";
+
+function App(){
+  const [score, setScore] = useState(100);
+  return(
+    <div>{score}</div>
+  )
+}
+
+export default App;  
+
+yaha par hame sabse pehle jo bhi score ki value de denge wo render ho jyga
+
+
+function App(){
+  const [score, setScore] = useState(100);
+  return(
+    <div className="px-4 py-5">
+      <h1>{score}</h1>
+      <button onClick={()=>setScore(200)} className="px-2 py-1 bg-cyan-500 rounded-full mt-2">Change</button>
+    </div>
+  )
+}
+
+// ye wala example bahut samjhne layak he kyuki jab haamne setScore ko onClick me pas kiya he toh wo turant nhi chala he wo tab hi chalega jab click hoga kyuki wo ek arrow function he, ab agar ham usse normal likh dete toh wo tutant chal jata kyuki hame () lagane pdate aur bina () lagay ham setScore ko nayi value nhi pass kar sakte the
+
+
+function App(){
+  const [banned, setBanned] = useState(false);
+  return(
+    <div className="px-4 py-5">
+      <h1>{banned.toString()}</h1>
+      <button onClick={()=>setBanned(!banned)} className="px-2 py-1 bg-cyan-500 rounded-full mt-2">ban karo</button>
+    </div>
+  )
+}
+
+isme ham value ko set kar rhe he ya toh true ya toh false
+par isme agar ham direct true pass kar dete he toh wo ek baar true set hoke bas set hi rahega aur phle bhi true tha aur abhi bhi hamne true set kar diya toh hame ek baar ke baad changes nahi dikhenge
+isiliye ham haar baar banned ka ! paas kar rhe he taki phle se jo bhi ho just uska ulta ho jy
+
+function App(){
+  const[val, setVal] = useState(12);
+
+  return(
+    <div className="p-5">
+      <h1>{val}</h1>
+      <button onClick={() => setVal((prev) => prev+1)} className="px-3 py-1 bg-blue-400 rounded-full">change karo</button>
+    </div>
+  )
+}
+// ab iss uper wale example me ham setVal me ek value bhi recieve kar sakte he jo ki koi aur value nhi balki previous value hoti he aur fir hame uss value me +1 karke arrow function ki help se return karte he
+
+// useState() Advanced
+
+
+import React, { useState } from "react";
+function App(){
+  const[val, setVal] = useState({name : "harsh", isBanned : false})
+
+  return(
+    <div className="p-5">
+      <h1>name : {val.name}</h1>
+      <h2>banned : {val.isBanned.toString()}</h2>
+      <button onClick={()=>setVal({...val, isBanned: !val.isBanned})} className="px-3 py-1 bg-blue-400 rounded-full text-white">change</button>
+    </div>    
+  )
+}
+
+export default App;  
+
+// iss uper wale code ko dhyan se samjhna he kyuki object ke case me ab useState thoda alag se kaam karte he 
+
+// agar ham val me object pass kar rahe he toh hame isBanned ki value ko change direct nhi kar sakte 
+// hame ek naya object banana padega whi par or ...(spread operator) ki help se sari values ko copy karao
+// uske baad jo bhi naya object hamne banaya he usme property ko manually change kardo jese uper wale code me kiya he, purane isBanned ki value ke aage ! operator lagaker true kar diya he
+
+// Or ye sari khichdi hame isiliye karna he kyuki object and arrays reference type hote he ham unhe direct pass nhi kar sakte
+
+
+
+************************************************************************************************
+                                Section 6: Mastering the useState
+************************************************************************************************
+
+
+// Mastering the useState()
+
+
+1) import React, { useState } from "react";
+function App(){
+  const[val, setVal] = useState({name : "harsh", isBanned : false})
+
+  return(
+    <div className="p-5">
+      <h1>name : {val.name}</h1>
+      <h2>banned : {val.isBanned.toString()}</h2>
+      <button onClick={()=>setVal({...val, isBanned : !val.isBanned})} className={`px-3 py-1 ${val.isBanned ? "bg-blue-500" : "bg-red-500"} text-xs rounded-full text-white`}>Change</button>
+   </div>    
+  )
+}
+
+export default App;  
+
+// Is code me ham isBanned ki value ke base par apni button ka color bhi change kar sakte he
+
+Note : useState state ko turant update nahi karta, wo useState ko update karta he apne hisab se function completion ke baad to fix performnance issues 
+
+import React, { useState } from "react";
+
+function App(){
+   const [val, setVal] = useState({name:"harsh", age:25});
+  return(
+    <div>
+      <button onClick={() => {
+        setVal({...val,gender:"male"});
+        console.log(val)
+      }}>click</button>
+    </div>
+  )
+}
+
+export default App;
+
+// Iss example me me hamne dekha ki kisi bhi object me koi key value pair ko kese update karte he, par jo turant baad console.log()kiya he usse hame jo object he usme changes nhi dikhenge kyuki react turant changes nahi karta wo phle pura function chalata he uske baad change karta he. 
+
+----------------------------------------------------------------
+
+useState Arrays;
+
+import React, { useState } from "react";
+
+function App(){
+   const [val, setVal] = useState([1,2,3,4,5,6]);
+  return(
+    <div className="p-6">
+      {val.map(item => <h1>{item}</h1>)}
+    </div>
+  )
+}
+
+export default App;
+
+// just an simple example
+
+
+import React, { useState } from "react";
+
+function App(){
+   const [val, setVal] = useState([1,2,3,4,5,6]);
+  return(
+    <div className="p-6">
+      {val.map(item => <h1>{item}</h1>)}
+      <button onClick={() => setVal(()=>{
+        return val.filter((item, index) => index != val.length - 1)
+      })} className="px-2 py-1 text-xs text-white rounded-full bg-blue-500">Click</button>
+    </div>
+  )
+}
+
+export default App;
+
+// Uper wale code ko padh pana actually thoda tough he 
+Isme hamare pas ek array he jiske sare elements hamme h1 me show kiye he 
+// the task is remove one by one element from the array while clicking
+Ab ham isse kese karenge , phle toh hame ek array chahiye return me toh hame val par map method lagani padegi uske baad map se ham har baar ek naya h1 banaker return kar de rhe he toh wo ek array of h1 ke form me return ho raha he
+//ab ham jab bhi button par click karenge toh onClick function chalega jisse ek setVal function chaleega ab usse hame ek array dena he toh wo bhi ek arrow function recieve karega uske baad ham array ka size reduce by 1 karna chahte he toh ham usper filter laga rhe he aur bol de rhe he ki agar index length ke baraber ho jy toh return mat karna nhi toh return kar dena uske baad jo final return statement laga hua h wo ek, 1 size kam ka array return kar dega
+
+function App(){
+   const [val, setVal] = useState([1,2,3,4,5,6]);
+  return(
+    <div className="p-6">
+      {val.map(item => <h1>{item}</h1>)}
+      <button onClick={()=>setVal(()=>val.filter((item, index)=> index != val.length-1))} className="px-2 py-1 text-xs text-white rounded-full bg-blue-500">Click</button>
+    </div>
+  )
+}
+
+
+
+
+// useState() Arrays Part II
+
+import React, { useState } from "react";
+
+function App(){
+   const [val, setVal] = useState([1,2,3,4,5,6]);
+  return(
+    <div className="p-6">
+      {val.map((item) => <h1>{item}</h1>)}
+      <button onClick={() => setVal(() => val.filter((item , index) => index != 2))} className="px-2 py-1 text-xs text-white rounded-full bg-blue-500">Click</button>
+    </div>
+  )
+}
+
+export default App;
+
+//Uper wala code har baar 2nd index wali cheez ko remove kar dega click hone par
+
+function App(){
+   const [val, setVal] = useState([1,2,3,4,5,6]);
+  return(
+    <div className="p-6">
+      {val.map((item) => <h1>{item}</h1>)}
+      <button onClick={() => setVal(() => val.filter(item => item%2 !== 0))} className="px-2 py-1 text-xs text-white rounded-full bg-blue-500">Click</button>
+    </div>
+  )
+}
+
+// it's just one more example
+
+
+
+
+// useState() Arrays Addition *
+
+function App(){
+   const [val, setVal] = useState([{name : "harsh", age: 20}, {name : "rahul", age:22}, {name : "pranay", age:25}]);
+  return(
+    <div className="p-6">
+      {val.map((items)=>(
+        <div>
+          <h1>Name : {items.name}</h1>
+          <h4>Age : {items.age}</h4>
+        </div>
+      ))}
+      <button onClick={() => setVal(() => val.map(item => item.name === 'rahul' ? ({name:"rahul", age:26}) : item))} className="px-2 py-1 text-xs text-white rounded-full bg-blue-500">Click</button>
+    </div>
+  )
+}
+
+// one more example to increase rahul's age
+
+
+// useState() Hooks
+
+
+import React, { useState } from "react";
+
+function Card(){
+    const [val, setVal] = useState(false);
+
+    return(
+        <div>
+            {/* {print bahar jao if val is flase and print mat jao if val is true} */}
+            <h1>{val === false ? "Bahar jao" : "Mat jao"}</h1>
+            <button onClick={() => setVal(!val)} className="px-3 py-1 bg-blue-500 rounded-full">Click</button>
+        </div>
+    )
+}
+
+export default Card; 
+
+// Component card one more example
+
+<button onClick={() => setVal(() => !val)} className="px-3 py-1 bg-blue-500 rounded-full">Click</button>
+
+ ^ THis is the correct way to set the value using setVal, ki aap setVal ko ek function dedo wo change karta rahega
+
+
+ ********************************Kuch Banate he ********************************
+
+ import React, { useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
+function Card(){
+
+    const [val, setVal] = useState(false);
+
+    return(
+        <div className="w-full h-screen bg-zinc-300 flex justify-center items-center">
+            <div className="w-60 h-32 bg-zinc-500 rounded-md relative flex overflow-hidden">
+                <img className={`h-full w-full transition-transform duration-700 ${val === false ? "-translate-x-[0%]" : "-translate-x-[100%]"} object-cover shrink-0`} src="https://images.unsplash.com/photo-1719937206255-cc337bccfc7d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzNnx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                <img className={`h-full w-full transition-transform duration-700 ${val === false ? "-translate-x-[0%]" : "-translate-x-[100%]"} object-cover shrink-0`} src="https://images.unsplash.com/photo-1668302785920-00972ac2b266?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMDh8fHxlbnwwfHx8fHw%3D" alt="" />
+
+                <span onClick={() => setVal(() => !val)} className="w-8 h-8 flex items-center justify-center rounded-full bg-[#dadada9b] absolute bottom-[0%] left-1/2 -translate-x-[50%]">
+                    <FaArrowRight size={".7em"}/>
+                </span>
+            </div>
+        </div>
+    )
+}
+
+export default Card; 
+
+// Ek chota sa mini slider banaya he jisme 2 photos agal bagal slide karengi ek arrow ke click hone par
+
+
+
+************************************************************************************************
+                                Section 8: Passing Data Via Props
+************************************************************************************************
+
+Understanding Props
+
+// Props use hote he aapke component ko reusable banane ke liye, consider karo aapke paas ek button he, and aapko uss button ko alag alag jagah daalna he app me, toh aap ek button component banay and uska data hard coded karne ki jagah parent component se send kar de and child component par use kar le
+
+import React from "react";
+
+function Card(){
+    return(
+        <button className="px-3 py-1 bg-blue-400 text-zinc-100 text-xs rounded m-2">Know more</button>
+    )
+}
+
+export default Card; 
+
+// Is code se button wala data App me jaa rha he jisse ham do baar render kar rhe he ab suppose karo ki button me hame hard coded data nhhi bhejna toh ham kya karenge wo neeche wala code batayga
+
+
+import React, { useState } from "react";
+import Card from "./Components/Card";
+function App(){
+  return(
+    <>
+    <Card chacha="10"/>
+    <Card chacha="11"/>
+    </>
+  )
+}
+
+export default App;  
+
+// yaha ham props bhej rhe he hamari Card component ko jinhe ham props kehte he ab unhe waha par recieve bhi karna padega toh ham unhe ek parameter me recieve kar sakte he, but ab ham unhe as a parameter me recieve nhi karenge =, balki ab ham unhe object description ki help se recieve karenge jese example
+
+import React from "react";
+
+function Card({chacha}){
+    return(
+        <button className="px-3 py-1 bg-blue-400 text-zinc-100 text-xs rounded m-2">{chacha}</button>
+    )
+}
+
+export default Card; 
+
+// ab yaha ek dhyan dene wali baat ye he ki aap jiss naam se app se data bhejoge same ussi naam se card me data recieve hoga else nhi dikhega
+
+import React, { useState } from "react";
+import Card from "./Components/Card";
+function App(){
+  return(
+    <>
+    <Card text="know more" color="bg-blue-600"/>
+    <Card text="Download" color="bg-red-700"/>
+    </>
+  )
+}
+
+export default App; 
+//----------------------------------------------------------------
+import React from "react";
+
+function Card({text, color}){
+    return(
+        <button className={`px-3 py-1 ${color} text-zinc-100 text-xs rounded m-2`}>{text}</button>
+    )
+}
+
+export default Card; 
+
+// Similarly ham multipe cheezen bhej aur reciecve bhi kar sakte he
+
+// Now Props Drilling Usage
+
+task: hamara data actually app component me hoga aur ham usse prop ke through pass kartenge card me, har card par ek ad friend button hoga and hame add friend button par click karne par ek alert milega
+
+
+import React, { useState } from "react";
+import Card from "./Components/Card";
+function App(){
+
+  const data = [
+    {name : "john", profession:"Painter", image:"https://plus.unsplash.com/premium_photo-1683121771856-3c3964975777?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBvcnRyYWl0fGVufDB8fDB8fHww"},
+    {name : "Rahul", profession:"Thalua", image:"https://media.istockphoto.com/id/1485546774/photo/bald-man-smiling-at-camera-standing-with-arms-crossed.webp?a=1&b=1&s=612x612&w=0&k=20&c=0ids4O4zdfqqB3DcwDY9SGuKOEgTTlpW4csklV0v8t0="},
+    {name : "Harsh", profession:"Coder", image:"https://media.istockphoto.com/id/1949501832/photo/handsome-hispanic-senior-business-man-with-crossed-arms-smiling-at-camera-indian-or-latin.webp?a=1&b=1&s=612x612&w=0&k=20&c=myjjInVm75nzuTTvwn1i7NjJm2hfdGIOuXW6LO1Idy4="},
+    {name : "Amit", profession:"Artist", image:"https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"}
+
+  ]
+
+  return(
+    <>
+      <div className="w-full h-screen bg-zinc-300 flex gap-4 items-center justify-center">
+        {data.map((item,index) => (
+          <Card image={item.image} name={item.name} profession={item.profession}/>
+        ))}
+      </div>
+    </>
+  )
+}
+
+export default App; 
+
+//----------------------------------------------------------------
+import React from "react";
+
+function Card({image, name, profession}){
+    return(
+        <div className="w-52 bg-white rounded-md overflow-hidden">
+            <div className="w-full h-32 bg-sky-200">
+                <img className="w-full h-full object-cover object-center" src={image} alt="" />
+            </div>
+            <div className="w-full p-3">
+                <h3 className="text-xl font-semibold">{name}</h3>
+                <h5 className="text-xs">{profession}</h5>
+                <button className="px-3 py-1 text-xs text-white bg-blue-500 font-semibold rounded-md mt-4">Add friend</button>
+            </div>
+        </div>
+    )
+}
+
+export default Card; 
+
+// Ab isme hame baar baar values ko likhker props me pass karna pad rha he ab iska optimise tareeka dekhte he
+
+
+import React, { useState } from "react";
+import Card from "./Components/Card";
+function App(){
+
+  const data = [
+    {name : "john", profession:"Painter", image:"https://plus.unsplash.com/premium_photo-1683121771856-3c3964975777?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBvcnRyYWl0fGVufDB8fDB8fHww"},
+    {name : "Rahul", profession:"Thalua", image:"https://media.istockphoto.com/id/1485546774/photo/bald-man-smiling-at-camera-standing-with-arms-crossed.webp?a=1&b=1&s=612x612&w=0&k=20&c=0ids4O4zdfqqB3DcwDY9SGuKOEgTTlpW4csklV0v8t0="},
+    {name : "Harsh", profession:"Coder", image:"https://media.istockphoto.com/id/1949501832/photo/handsome-hispanic-senior-business-man-with-crossed-arms-smiling-at-camera-indian-or-latin.webp?a=1&b=1&s=612x612&w=0&k=20&c=myjjInVm75nzuTTvwn1i7NjJm2hfdGIOuXW6LO1Idy4="},
+    {name : "Amit", profession:"Artist", image:"https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"}
+
+  ]
+
+  return(
+    <>
+      <div className="w-full h-screen bg-zinc-300 flex gap-4 items-center justify-center">
+        {data.map((item,index) => (
+          <Card values={item}/>
+        ))}
+      </div>
+    </>
+  )
+}
+
+export default App; 
+
+//----------------------------------------------------------------
+
+import React from "react";
+
+function Card({values}){
+    const {name, profession ,image } = values
+
+    return(
+        <div className="w-52 bg-white rounded-md overflow-hidden">
+            <div className="w-full h-32 bg-sky-200">
+                <img className="w-full h-full object-cover object-center" src={image} alt="" />
+            </div>
+            <div className="w-full p-3">
+                <h3 className="text-xl font-semibold">{name}</h3>
+                <h5 className="text-xs">{profession}</h5>
+                <button className="px-3 py-1 text-xs text-white bg-blue-500 font-semibold rounded-md mt-4">Add friend</button>
+            </div>
+        </div>
+    )
+}
+
+export default Card; 
+
+it is also one of the way to do that
+
+
+// now props drilling event Handeling
+Now ab hame karna kya he ki jo add friend wala button he usper clik karne se ham friends ban jy aur green ho jy and jab wapas click kare toh same phle jesa ho jy
+
+Note: state jaha banti he wahi modify ki ja sakti he
+
+
+
+import React, { useState } from "react";
+import Card from "./Components/Card";
+function App(){
+
+  const raw = [
+    {name : "john", profession:"Painter", image:"https://plus.unsplash.com/premium_photo-1683121771856-3c3964975777?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBvcnRyYWl0fGVufDB8fDB8fHww", friends: false},
+    {name : "Rahul", profession:"Thalua", image:"https://media.istockphoto.com/id/1485546774/photo/bald-man-smiling-at-camera-standing-with-arms-crossed.webp?a=1&b=1&s=612x612&w=0&k=20&c=0ids4O4zdfqqB3DcwDY9SGuKOEgTTlpW4csklV0v8t0=", friends: false},
+    {name : "Harsh", profession:"Coder", image:"https://media.istockphoto.com/id/1949501832/photo/handsome-hispanic-senior-business-man-with-crossed-arms-smiling-at-camera-indian-or-latin.webp?a=1&b=1&s=612x612&w=0&k=20&c=myjjInVm75nzuTTvwn1i7NjJm2hfdGIOuXW6LO1Idy4=", friends: false},
+    {name : "Amit", profession:"Artist", image:"https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D", friends: false}
+
+  ]
+
+  const [data, setData] = useState(raw);
+
+  const handleClick = (changingIndex) => {
+    setData((previous)=>{
+      return previous.map((item, index) => {
+        if(index === changingIndex) return {...item, friends : !item.friends}
+        return item;
+      })
+    })
+  }
+
+  
+  // Ab yaha par scene kya he ki hamne useState main file me banaya he aur hame isse modify dusri file se karna he yani ki onClick wala jo function he wo toh card wali file me he , aur state ke sath kya hota he ki ham jaha bhi state ko banate he wahi usse modufy karna padta he matlab ham aur kahi se usse modify nhi kar sakte
+  // Toh ab ham karenge kya, ki ham state ko ek function me daal denge aur uss function ko as a Props pass kar denge aur waha par recieve kar lenge fir onClick par phle ki tarah usse chala denge
+  
+  return(
+    <>
+      <div className="w-full h-screen bg-zinc-300 flex gap-4 items-center justify-center">
+        {data.map((item,index) => (
+          <Card key={index} handleClick={handleClick} index={index}  values={item}/>
+        ))}
+      </div>
+    </>
+  )
+}
+
+export default App; 
+
+----------------------------------------------------------------
+
+import React from "react";
+
+function Card({values, index, handleClick}){
+    const {name, image, profession, friends } = values
+
+    return(
+        <div className="w-52 bg-white rounded-md overflow-hidden">
+            <div className="w-full h-32 bg-sky-200">
+                <img className="w-full h-full object-cover object-center" src={image} alt="" />
+            </div>
+            <div className="w-full p-3">
+                <h3 className="text-xl font-semibold">{name}</h3>
+                <h5 className="text-xs">{profession}</h5>
+                <button onClick={()=>handleClick(index)} className={`px-3 py-1 text-xs text-white ${friends ? "bg-green-500" : "bg-blue-400"} font-semibold rounded-md mt-4`}>{friends === true ? "Friends" : "Add Friends"}</button>
+            </div>
+        </div>
+    )
+}
+
+export default Card; 
+// Props game Description is writte in the code as comments
+
+
+************************************************************************************************
+                                Section 9: Props and State Exercises
+************************************************************************************************
+
+
+import React from "react";
+
+function Nav({data}) {
+    return(
+        <div className="w-full px-20 py-6 flex justify-between items-center">
+            <h3>Orange</h3>
+            <div className="flex p-2 px4
+            bg-orange-600 text-white rounded-md text-sm gap-2">
+                <h3>Favourites</h3>
+                <h4>{data.filter(item => item.added).length}</h4>
+            </div>
+        </div>
+    )
+}
+
+export default Nav;
+
+// Iss section me hamne ek nav component banaya he jo reciecve kar rha he data he jisse ham app se bhej rhe he uss data par ham filter kar rhe he aur dekh rhe he ki kitne added ki value true he, jitne bhi added ki value true hogi utne size ka ek array mil jyga hame toh ham uss array ki length nikal kar favourites wali button me print kar de rhe he
+----------------------------------------------------------------
+
+import React from "react";
+
+function Card({data, handleClick, index}){
+
+    const {image, artist, added, name} = data
+
+    return(
+        <div className="w-60 bg-zinc-100 p-4 rounded-md flex gap-4 pb-7 relative mt-10">
+            <div className="w-20 h-20 bg-orange-600 rounded-md overflow-hidden">
+                <img className="h-full w-full object-cover" src={image} alt="" />
+            </div>
+            <div className="">
+                <h3 className="text-xl leading-none font-semibold">{name}</h3>
+                <h6 className="text-sm">{artist}</h6>
+                <button onClick={() => handleClick(index)} className={`px-4 py-3 ${added === false ? "bg-orange-600" : "bg-teal-500"} rounded-full text-white text-xs absolute bottom-0 -translate-y-[-50%] -translate-x-[50%]`}>{added === false ? "Add to favourites" : "Added"}</button>
+            </div>
+        </div>
+    )
+}
+
+export default Card;
+
+// ye ek card component he jisme songs he kafi sare, aur isme hamne har data ko app file se hi props me accept kiya he aur ussey dynamically render kiya he main iske samjhne wala button he ki ham kya kar rhe he useState ko hamne ek function me banaya he aur waha se ham ek function send kar rhe he and uss function ko ham onClick par chala de rhe he, ab dikkat ye he ki pata kese chalge ki konsi buttton par click hua isiliye hamne waha se current index ko bhi send kiya he aur uske baad jiss par bhi click hoga toh wo same index return ho jyga aur waha jaker ham uss index ko handleClick naam wale function me recieve kar lenge, aur fir uske baad check karenge ki jo map wale current index ki value he aur jo return hoker aayi h agar wo same nhi he toh pura item return kardo aur agar same he toh ek naya object return kardo uss jagah par jitme baki sab same hoga bas added ki value palat jygi
+---------------------------------------------------------------- 
+
+import React, { useState } from "react";
+import Card from "./Components/Card";
+import Nav from "./Components/Nav";
+function App(){
+
+  const data = [
+    {image:"https://images.unsplash.com/photo-1724942462164-7c30f103d91c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D", name:"Flower", artist:"Harsh", added:false},
+    {image:"https://images.unsplash.com/photo-1725181959662-af4acf689235?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyM3x8fGVufDB8fHx8fA%3D%3D", name:"One love", artist:"Hitesh", added:false},
+    {image:"https://images.unsplash.com/photo-1724754608947-f86db9039cf9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNnx8fGVufDB8fHx8fA%3D%3D", name:"Study", artist:"Adarsh", added:false},
+    {image:"https://images.unsplash.com/photo-1724759401545-f0d37d5bbd27?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0NXx8fGVufDB8fHx8fA%3D%3D", name:"Thunder", artist:"Sarthak", added:false}
+  ]
+
+  const [songData, setSongData] = useState(data);
+
+  const handleClick = (index) => {
+    setSongData((prev) => {
+      return prev.map((item, itemIndex) => {
+        if(itemIndex === index) return {...item, added : !item.added};
+        return item;
+      })
+    })
+  }
+
+  return(
+    <>
+    <div className="w-full h-screen bg-zinc-300">
+      <Nav data={songData}/>
+      <div className="px-20 flex gap-10 mt-10 flex-wrap">
+        {songData.map((obj, index) => (
+          <Card data={obj} handleClick={handleClick} key={index} index={index} />
+        ))}
+      </div>
+    </div>
+    </>
+  )
+}
+
+export default App;
+
+************************************************************************************************
+React js Styling Component
+
+Two ways:
+
+(1) CSS modules - jisme aap kabhi kisi website ka code dekhte ho and waha pa aapko css classes ka naam bada aada teda dikhta he ex-sfiugqfi;
+
+(2)UI Libraries - tailwind css , material ui, bootstrap css, chakra
+
+-------React js CSS modules-----
+
+Sabse pehle hame el css file banani he Components folder ke ander, jiska naam "style.module.css" hoga
+
+ab uss file me ham hamare man se jo chahe wo naam ki class bana sakte he uske baad hame jaha usse use karna he waha ussey import karna padega jese baki files import karte he, aur ab uss file me hame uski classes use karni he toh jiss naam se hamne usse import kiya he ussi naam se ham jsx ke brackets open karke use kar sakte he
+
+// example
+import React from "react";
+import styles from "./style.module.css";
+
+function Nav({data}) {
+    return(
+        <div className="w-full px-20 py-6 flex justify-between items-center">
+            <h3 className={styles.a} //css class from another file>Orange</h3>
+            <div className="flex p-2 px4
+            bg-orange-600 text-white rounded-md text-sm gap-2">
+                <h3>Favourites</h3>
+                <h4>{data.filter(item => item.added).length}</h4>
+            </div>
+        </div>
+    )
+}
+
+export default Nav;
+
+Aur agar ek se jyda clases use karna he toh es6 likhdo `` lagaker
+example
+
+            <h3 className={`${styles.a} ${styles.b}`}>Orange</h3>
+
+
+
+************************************************************************************************
+                                Section 10: Form Handeling
+************************************************************************************************
+
+Form Handeling -> Hame pata he ki form ke submit hone par website reload ho jati he, aur react ka main focus ye he ki ye webpage reload nhi hona chaiye, nhi toh kya matlab aapka react use karne ka.
+ 
+
+import React from "react";
+function App(){
+  return(
+    <div className="p-6">
+      <form action="">
+        <input className="border-2" type="text" placeholder="name" />
+        <input className="px-1 py-1 ml-4 rounded-md bg-cyan-500" type="submit" />
+      </form>
+    </div>
+  )
+}
+
+export default App;
+
+----------------------------------------------------------------
+
+ye ek simple form banaye he isme dikkat kya he ki, agar ham jese hi submit button dabaynge toh page turant refresh/ re-load ho jyga, aur hame issi ko rokna he, ab isse rokne ke kuch tareeke he jese:-
+
+(1) useRef
+(2) controlled components
+(3) react Hook Form (Mostly used)
+
+----------------------------------------------------------------
+
+(1) useRef:- iss tareeke me ham har input ko Select kar lete he and unki value tab nikalte he jab form submit hota he
+
+// ab hame pata he ki js me pehle ham id dete the aur fir querySelector ki help se select karte the
+same in react but method changed, ab ham useRef ka use karenge select karne ke liye
+
+import React, { useRef } from "react";
+function App(){
+  const elem = useRef(null);
+  console.log(elem)
+  return(
+    <div ref={elem} className="p-6">
+      <h1>Hello</h1>
+    </div>
+  )
+}
+
+export default App;
+
+Chaliye is code ko dhyan se samjhte he- Isme ho kya rha he hamne ek useRef banaye he aur ussey ek const elem me save kar liya he, ab hame ussey jiss bhi element se connect karna he ham uss element par ek ref lagaker hamare elem ka naam pass kar sakte he toh wo ussey connect ho jyga aur ham ussey fir elem naam se bhi use kar sakte he,
+// Ab yaha scene kya he ki hamne useRef me null, pass kiya he wo isiliye ki jab bhi code chalta h toh phle useRef chalta he, aur agar ham waha element ka naam de dete toh ussey, actually me wo element agar render hi nhi hua he toh mjlega kese
+same wahi hamne turant baad console.log kiya hr toh hame null milega.
+
+----------------------------------------------------------------
+import React, { useRef } from "react";
+function App(){
+  const name = useRef(null);
+  const age = useRef(null);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(name.current.value, age.current.value);
+    // yaha par name hamara useRef wala reference he jo hame object dega current wala, uske baad ham name.current karke hamare input ki value ko access kar sakte  he, then hamne .value lagaya hua he toh ye DOM ka part he ki ham input tag ki value nuikal sakte he .value lagaker
+  }
+  return(
+    <form action="" onSubmit={handleSubmit}>
+      <input ref={name} placeholder="name" type="text" />
+      <input ref={age} placeholder="age" type="text" />
+      <input type="submit" />
+    </form>
+  )
+}
+
+export default App;
+
+It is the first way to do form Handeling.
+----------------------------------------------------------------
+
+(2) controlled Component :- AAp jab bhi kuch likhe, useState ke through real time par update kar dein
+// jese hi kuch type ho set state kardo nayi value ke baraber
+
+import React, { useState } from "react";
+function App(){
+  const [val, setVal] = useState({name : ""});
+  return(
+    <div>
+      <form action="">
+        <input onChange={(event) => console.log(event.target.value)} type="text" placeholder="name" />
+        {/* yaha par hamne onChange event lagaya he jo hame ek event dega jiske pas value hoti he target jo detail rakhti he ki konse input tag targeted he toh uski valur hamne print kara di he */}
+      </form>
+    </div>
+  )
+}
+
+export default App;
+
+----------------------------------------------------------------
+
+import React, { useState } from "react";
+function App(){
+  const [val, setVal] = useState({name : "", email:""});
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(val); 
+  }
+  return(
+    <div>
+      <form action="" onSubmit={handleSubmit}>
+        <input onChange={(event) => setVal({...val, name:event.target.value})} type="text" placeholder="name" />
+        {/* yaha par hamne onChange event lagaya he jo hame ek event dega jiske pas value hoti he target jo detail rakhti he ki konse input tag targeted he toh uski value ko hamne setVal function ki help se useStata ko update kardia he, basically hamne onChange par setVal chalaya he jo ki bhejega ek naya object useState ko jisme name ki value real time par change hogi jo bhi ham type karenge */}
+        {/* Thoda sa modification he ki ab hame email bhi change karna he toh baki values sari same name uper wale se name change ho rha he aur neeche wale se email */}
+        <input onChange={(event) => setVal({...val, email:event.target.value})} type="email" placeholder="email" />
+        <input type="submit" />
+      </form>
+    </div>
+  )
+}
+
+export default App;
+
+----------------------------------------------------------------
+
+(3) react Hook Form (Mostly used) :- Issey chalane ke liye hame issey install karna padega jiske liye ham terminal par npm install react-hook-form chalaynge
+
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+function App(){
+const {register, handleSubmit} = useForm();
+// console.log(register())
+// Use form hame ek register function deta he jiske paas kuch values hoti he, 1. onBlur, 2. onChange, 3. ref, useForm hame ek aur function deta he jiska naam handleSubmit hota he, aur hame inka hi handleSubmit use karna he
+  return(
+    <div>
+      <form action="" onSubmit={handleSubmit(data => console.log(data))}>
+        {/* handleSubmit basically ek function he jo ki data accept karta he aur submit hone se bhi rok deta he fir uske baad uss data ke sath aap jo chahe wo kar sakte he */}
+        <input {...register('name')} type="text"  placeholder="name"/>
+        {/* yaha par hamne jsx ke brackets open kar karke register me aane wali teeno properties ko spread kar diya he aur register ko ek naam bhi dena hota he jiss naam se aapko ussey pehchan wana he */}
+        <input {...register('email')} type="text"  placeholder="email"/>
+        <input type="submit" />
+      </form>
+    </div>
+  )
+}
+
+export default App;
+
+----------------------------------------------------------------
+
+************************************************************************************************
+                                Section 11: Form Handeling Exercise 
+************************************************************************************************
+
+Ab ek chota sa mini project bana rhe he jiska architecture kuch  aesa he
+App 
+  Cards 
+     card
+  Form
+
+----------------------------------------------------------------
+
+App.jsx
+
+import React, { useState } from "react";
+import Cards from "./components/Cards";
+import Form from "./components/Form";
+
+function App(){
+  const [users, setUsers] = useState([]);
+
+  const handleFormSubmitData = (data) => {
+    setUsers([...users,data])
+  }
+  const handleRemove = (id) => {
+    setUsers(() => users.filter((item, index) => index != id))
+  }
+  return(
+    <div className="w-full h-screen bg-zinc-200 flex items-center justify-center">
+      <div className="container mx-auto">
+        <Cards  handleRemove={handleRemove} users={users}/>
+        <Form handleFormSubmitData={handleFormSubmitData}/>
+      </div>
+    </div>
+  )
+}
+
+export default App;
+
+----------------------------------------------------------------
+
+Form.jsx
+
+import React from "react";
+import { useForm } from "react-hook-form";
+
+function Form({handleFormSubmitData}){
+    const {register, handleSubmit, reset} = useForm();
+    const handleFormSubmit = (data) => {
+        handleFormSubmitData(data);
+        reset();
+    }
+    return (
+        <div className="mt-10 flex gap-10 justify-center">
+            <form className="flex gap-10" onSubmit={handleSubmit(handleFormSubmit)}>
+                <input {...register('name')} className="rounded-md px-2 py-1 text-base font-semibold outline-none" type="text" placeholder="name" />
+                <input {...register('email')} className="rounded-md px-2 py-1 text-base font-semibold outline-none" type="text" placeholder="email" />
+                <input {...register('image')} className="rounded-md px-2 py-1 text-base font-semibold outline-none" type="text" placeholder="image url" />
+                <input className="rounded-md px-2 py-1 bg-blue-500 text-white font-semibold" type="submit" />
+            </form>
+        </div>
+    )
+}
+
+export default Form;
+
+----------------------------------------------------------------
+
+Cards.jsx
+
+import React from "react";
+import Card from "./Card";
+
+function Cards({users, handleRemove}){
+    return (
+        <div className="w-full max-h-96 overflow-auto p-4 flex justify-center gap-4 flex-wrap">
+            {users.map((item, index) => {
+                return <Card handleRemove={handleRemove} id={index} users={item} key={index}/>
+            })}
+        </div>
+    )
+}
+
+export default Cards;
+
+----------------------------------------------------------------
+
+Card.jsx
+
+import React from "react";
+
+function Card({users, handleRemove, id}){
+    return (
+        <div className="w-52 h-full bg-zinc-100 rounded-lg flex flex-col items-center p-2">
+            <div className="image w-[5vw] h-[5vw] rounded-full bg-zinc-300 overflow-hidden">
+                <img className="w-full h-full object-cover" src={users.image} alt="" />
+            </div>
+            <h1 className="text-xl font-semibold text-center leading-none">{users.name}</h1>
+            <h4 className="opacity-50 text-xs font-semibold">{users.email}</h4>
+            <p className="mt-2 text-center text-sm font-semibold leading-1 tracking-tight">I am {users.name} an computer science engineer from Lncts college Bhopal.</p>
+            <button onClick={() => handleRemove(id)} className="px-3 py-1 bg-red-600 text-xs rounded-md font-semibold text-white mt-4">Remove It</button>
+        </div>
+    )
+}
+
+export default Card;
+
+************************************************************************************************
+                                Section 12: React Js Routing and Beyond 
+************************************************************************************************
+
+(1) First we understand what is routing?
+Kisi bhi website me hamne dekha he ki basic navbar agar he toh usme multiple buttons rehti he aur unn buttons par click karne se ham naye naye dusre pages par jaa sakte he aur uper hamara address bhi change hota hua dikhta he, toh issi functionality ki achieve karne ke liye ham routing ka use karte he
+
+jese ham example lete he myntra ka toh hame jo home page dikhta he wo basically home component bhi bol sakte he aur agar ham uper t-shirts wake button par click karte he toh hame naya page milta he with new url, issi functionality ko achieve karne ke liye routing ka use hota he
+
+(2) ab hamare package me routing karne ke liye hame chahiye hoga 'react-router-dom' 
+iske liye "npm install react-router-dom" command chalani he
+
+(3) hame iska baad hamare sabse bade container me routing apply karni he jo ki main.jsx he.
+Usme browser router naam ka ek tag hota he jo react-router-dom" KE THROUGH  milte he. aur uske baad hamare app ko wrap kar dijiye browserrouter tag me
+
+import React from "react";
+
+const App = () => {
+  return <>
+    <nav>
+      <a href="">Home</a>
+    </nav>
+  </>
+}
+
+export default App;
+
+// agar ham react me is tarah a tag banate he toh jese hi ham Home par click karenge toh hamara page refresh ho jyga, aur ham bilkul nhi chahte ki hamrea page refresh ho jy, isiliye he link tag ka use karte he
+
+import React from "react";
+import { Link } from "react-router-dom";
+
+const App = () => {
+  return <>
+    <nav>
+      <Link to="/home">Home</Link>
+    </nav>
+  </>
+}
+
+export default App;
+
+----------------------------------------------------------------
+React-router-dom hame ek <Routes><Routes/> tag deta he jiske throug ham different different pasths create karte he
+
+Routs ke ander bhi <Route/> tage hota he 
+
+import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+
+const App = () => {
+  return <>
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/user">User</Link>
+      <Link to="/about">About</Link>
+    </nav>
+
+    <Routes>
+      <Route path="/" element={<Home />}/>
+    </Routes>
+  </>
+}
+
+export default App;
+
+// yaha hamne kiya kya he ki nav me 3 <Link/> tags banay he jo ki react-router-dom ke pas hote he aur ye page ko refresh hone se rokte he jinhe hamne ek path diya he sabhi ko alag alag, uske baad hamne ek route banay he jo ab Link tag home wale se connect ho gaya he aur hamne ussey element de diya he jo ki Home he, ab jab bhi home wale button par click karenge toh home wala component open ho jyga
+
+----------------------------------------------------------------
+
+Now hamne Codes ko pura saaf karne ke baad, ek change kiya he, wqo chamnge ye he ki hamne <Link/> tag ko <NavLink/> tag me change kardia he kyuki <NavLink/> hame ek bahut achi property deta he jo he style aur wo ek call back leta he usse hame pata chalta he ki konsi link abhi current me active he
+
+// Nav ke ander hamne style me ek function chalaya he jo ki check karega ki konsi link active he, aur jonsi bhi active hogi uska color tomato kar dega
+
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+
+const Nav = () => {
+  return (
+    <nav className="mt-10 flex justify-center gap-10 font-semibold underline">
+      <NavLink
+        style={(e) => {
+          return {
+            fontWeight : e.isActive ? "bold" : "",
+            color: e.isActive ? "tomato" : "",
+          };
+        }}
+        to="/"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        style={(e) => {
+          return {
+            color: e.isActive ? "tomato" : "",
+            fontWeight : e.isActive ? "bold" : "",
+          };
+        }}
+        to="/user"
+      >
+        User
+      </NavLink>
+      <NavLink
+        style={(e) => {
+          return {
+            fontWeight : e.isActive ? "bold" : "",
+            color: e.isActive ? "tomato" : "",
+          };
+        }}
+        to="/about"
+      >
+        About
+      </NavLink>
+    </nav>
+  );
+};
+
+export default Nav;
+
+
+----------------------------------------------------------------
+
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+
+const Nav = () => {
+  return (
+    <nav className="mt-10 flex justify-center gap-10 font-semibold underline">
+      <NavLink
+        style={(e) => {
+          return {
+            fontWeight : e.isActive ? "bold" : "",
+            color: e.isActive ? "tomato" : "",
+          };
+        }}
+        to="/"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        style={(e) => {
+          return {
+            color: e.isActive ? "tomato" : "",
+            fontWeight : e.isActive ? "bold" : "",
+          };
+        }}
+        to="/user"
+      >
+        User
+      </NavLink>
+      <NavLink
+        className={(e) => {
+            return [
+                e.isActive? "text-red-600" : "",
+                e.isActive? "font-bold" : "",
+            ].join(" ")
+        }}
+        to="/about"
+      >
+        About
+      </NavLink>
+    </nav>
+  );
+};
+
+export default Nav;
+
+// Same ham ussey className se bhi kar sakte he jo ki last wale me kiya h
+
+
+**********************************Done yaha par me iski sari files ka code paste kar deta**************************
+
+import React from "react";
+import Nav from "./components/Nav";
+import Routing from "./utils/Routing";
+
+const App = () => {
+  return <>
+    <Nav />
+    <Routing />
+  </>
+}
+
+export default App;
+
+----------------------------------------------------------------
+
+import React from "react";
+import Home from "../components/Home";
+import User from "../components/User";
+import About from "../components/About";
+import { Route, Routes } from "react-router-dom";
+
+const Routing = () => {
+    return(
+        <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/user" element={<User />}/>
+            <Route path="/about" element={<About />}/>
+        </Routes>
+    )
+}
+
+export default Routing;
+
+-------------------------------------------------------------------------
+
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+
+const Nav = () => {
+  return (
+    <nav className="mt-10 flex justify-center gap-10 font-semibold underline">
+      <NavLink to="/" >
+            {(e) => {
+                return (
+                    <span className={[
+                        e.isActive? "text-red-600" : "",
+                        e.isActive? "font-bold" : "",
+                    ].join(" ")}>Home</span>
+                )
+            }}
+      </NavLink>
+      <NavLink
+        style={(e) => {
+          return {
+            color: e.isActive ? "tomato" : "",
+            fontWeight : e.isActive ? "bold" : "",
+          };
+        }}
+        to="/user"
+      >
+        User
+      </NavLink>
+      <NavLink
+        className={(e) => {
+            return [
+                e.isActive? "text-red-600" : "",
+                e.isActive? "font-bold" : "",
+            ].join(" ")
+        }}
+        to="/about"
+      >
+        About
+      </NavLink>
+    </nav>
+  );
+};
+
+export default Nav;
+
+----------------------------------------------------------------
+
+import React from "react";
+
+const User = () => {
+    return (
+        <div className="w-1/2 m-auto mt-10 px-4">
+            <h1 className="text-red-600 text-5xl mb-2">Users</h1>
+            <p className="text-zinc-500 mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos unde assumenda nisi veniam harum sequi. Harum labore saepe eaque. Possimus enim provident saepe, eius accusantium sed! Eius nemo eligendi obcaecati.</p>
+            <button className="px-2 py-1 bg-blue-300 rounded-md">Learn More</button>
+        </div>
+    )
+}
+
+export default User;
+
+----------------------------------------------------------------
+
+import React from "react";
+
+const About = () => {
+    return (
+        <div className="w-1/2 m-auto mt-10 px-4">
+            <h1 className="text-red-600 text-5xl mb-2">About</h1>
+            <p className="text-zinc-500 mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos unde assumenda nisi veniam harum sequi. Harum labore saepe eaque. Possimus enim provident saepe, eius accusantium sed! Eius nemo eligendi obcaecati.</p>
+            <button className="px-2 py-1 bg-blue-300 rounded-md">Learn More</button>
+        </div>
+    )
+}
+
+export default About;
+
+----------------------------------------------------------------
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { BrowserRouter } from 'react-router-dom' 
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+)
+
+-------------------------------------------------------------------
+
+import React from "react";
+
+const Home = () => {
+    return (
+        <div className="w-1/2 m-auto mt-10 px-4">
+            <h1 className="text-red-600 text-5xl mb-2">Home</h1>
+            <p className="text-zinc-500 mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos unde assumenda nisi veniam harum sequi. Harum labore saepe eaque. Possimus enim provident saepe, eius accusantium sed! Eius nemo eligendi obcaecati.</p>
+            <button className="px-2 py-1 bg-blue-300 rounded-md">Learn More</button>
+        </div>
+    )
+}
+
+export default Home;
+
+----------------------------------------------------------------
+
+************************************************************************************************
+                                Section 13: React Js Dynamic Routing
+************************************************************************************************
+
+Is section me Dynami routing seekhenge usme ham ek route ke bhi aur routes banana seekhenge
+
+Jab bhi ham Dynamic Routing karte he toh actuall me page/ component nhi badalta he, agar kuch badalta he toh wo he data, chalo toh fir ek naya component banate he UserDetail.jsx naam se
+
+----------------------------------------------------------------
+
+import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+const UserDetail = () => {
+    const {name} = useParams();
+
+    const navigate = useNavigate();
+
+    const GoBackHandler = () => {
+        //navigate("/user");
+        // Aur agar hame url nahi likhna aur bas ek page peeche jana he toh usme ham -1 bhi pass kar sakte h
+        navigate(-1);
+    }
+    return (
+        <div className="w-1/2 m-auto mt-10 px-4">
+            <h1 className="text-red-600 text-5xl mb-2">User Detail</h1>
+            <h1 className="text-3xl">Hello {name}</h1>
+            <button onClick={GoBackHandler} className="mt-5 px-2 py-1 bg-blue-300 rounded-md">Go Back</button>
+        </div>
+    )
+}
+
+export default UserDetail;
+
+// Ab hamara task he ki hame button ke click hone par ek stage back jana he toh isse ham Link tag se toh nahi kar sakte h, 
+// Iske liye react-router-dom hame ek function deta he useNavigate jisse ham buttton ke click hone par call karenge aur jaha bhi jana he uska url paste kar denge
+
+// New task - ab abhi hamara jo john he agar ham usper click karte he toh hame ek naya componenrt kholna padra he, aur kitna acha rahega ki agar ham uss component ko bina khole hi usse same page me hi le ay, toh dekhte he fir kese laynge
+
+// Ab hame ye karne ke liye karna kya he ki Jo hamari Routing wali file he usme jo name wala router banaya he use user wale router ke ander dalo, kuch iss tarah
+
+// <Route path="/user" element={<User />}>
+//      <Route path="/user/:name" element={<UserDetail />}/>
+// </Route>
+
+// uske baad ham component ko bataynge ki open kaha hona he - jise karne ke liye react-router ne hame ek aur cheez di he jiska naam he outlet, jo ki ek placeholder ki tarah work karta te aur isse jaha nh laga dennge waha data load ho jyga
+
+----------------------------------------------------------------
+
+import React from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
+
+const User = () => {
+
+    return (
+        <div className="w-1/2 m-auto mt-10 px-4">
+            <h1 className="text-red-600 text-5xl mb-2">Users</h1>
+            <div className="flex w-1/2 flex-col mt-5">
+                <Link className="p-3 bg-red-200 text-2xl mb-3 hover:bg-red-300" to="/user/john">John</Link>
+                <Link className="p-3 bg-red-200 text-2xl mb-3 hover:bg-red-300" to="/user/ayush">Ayush</Link>
+                <Link className="p-3 bg-red-200 text-2xl mb-3 hover:bg-red-300" to="/user/anubhav">Anubhav</Link>
+            </div>
+            <hr />
+            <Outlet />
+        </div>
+    )
+}
+
+export default User;
+
+// yaha par Agar ham dekhe toh hamara name static nhi he, kyuki ham jiss bhi name pr click karde toh wo name open ho jana chahiye toh ham Link tag me name pass kar denge aur waha : (colon) laga denge jisse name jo he wo current wale component ya Link ko fetch kar lega
+// <Route path="/user/:name" element={<UserDetail />}/>
+
+// Itna likhne se ham hamari user.jsx me jis par bhi click karenge wo current wala open ho jyga
+// Ab hame agar dynamically print karwana he names toh react-router-dom hame ek bahuit achi cheez deta he jiska naam he useParams(), ye hame return karta he jo bhi current variable ka naam he jo routing me laga hua he aur jis bhi url par ham jaa rha he
+// suppose ham john par ja rhe he toh hame milega ek object jisme hoga {name : 'john} john isiliye kyuki ham uss url paR jaa rhe he aur name isiliye kyuki routing me hamne variable ka nam name rakha tha
+
+----------------------------------------------------------------
+
+import React from "react";
+import Home from "../components/Home";
+import User from "../components/User";
+import About from "../components/About";
+import { Route, Routes } from "react-router-dom";
+import UserDetail from "../components/UserDetail";
+
+const Routing = () => {
+    return(
+        <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/user" element={<User />}>
+                <Route path="/user/:name" element={<UserDetail />}/>
+            </Route>
+            <Route path="/about" element={<About />}/>
+        </Routes>
+    )
+}
+
+export default Routing;
+
+----------------------------------------------------------------
+
+************************************************************************************************
+                                Section 14: How to integrate API in React Js
+************************************************************************************************
+
+Ajax(asynchronous java script and xml)- Ajax ek concept he jiske through ham front end aur backend ko connet karte he, aur isme hame 2 cheeze help karti he 1- fetch, 2- axios.
+
+Api- api basically ek link hoti he jo jo ki hame redirect karti he uske particular code par, Mainly ham isse isiliye padh rhe he kyuki hamare paas backend ka api hoga aur ham usse axios ki help se use karenge front end se back end tak pahuchne ke liye
+
+----------------------------------------------------------------
+import React from "react";
+import axios from "axios";
+
+const App = () => {
+
+  const getProducts = () => {
+    const api = "https://fakestoreapi.com/products";
+
+    axios.get(api).then(product => {
+      console.log(product);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  return <div className="p-[5%]">
+    <button onClick={getProducts} className="px-2 py-1 rounded bg-red-300">Call product api</button>
+  </div>
+}
+
+export default App;
+
+// Abhi ham fetch Api padh rhe he jisse ham axios ki help se kar sakte he,
+// isme hamne ek api ko ek const variable me save kr liya he aur ham axios se use use kar rhe he, Ab Axios hame ek get method deta he jiski help se ham kisi bhi api ko fecth kar sakte he, ab ye mthod hame ek promise return karta he jiske liye hame then aur catch banana pada, agar api fetch ho jata he toh ham use print kar rhe he nahi toh ham error print kar rhe he
+----------------------------------------------------------------
+
+import React from "react";
+import axios from "axios";
+
+const App = () => {
+
+  const getProducts = () => {
+    const api = "https://fakestoreapi.com/products";
+
+    axios.get(api).then(product => {
+      console.log(product);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  const addProducts = () => {
+    const api = "https://fakestoreapi.com/products";
+
+    axios.post(api,{
+      title: 'Shailendra',
+      price: 13.5,
+      description: 'lorem ipsum set',
+      image: 'https://i.pravatar.cc',
+      category: 'electronic' 
+    }).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  return <div className="p-[5%]">
+    <button onClick={getProducts} className="px-2 py-1 rounded bg-red-300">Call product api</button>
+    <br /><br />
+    <button onClick={addProducts} className="px-2 py-1 rounded bg-red-300">add product api</button>
+  </div>
+}
+
+export default App;
+
+// Abhi ham fetch Api padh rhe he jisse ham axios ki help se kar sakte he,
+// isme hamne ek api ko ek const variable me save kr liya he aur ham axios se use use kar rhe he, Ab Axios hame ek get method deta he jiski help se ham kisi bhi api ko fecth kar sakte he, ab ye mthod hame ek promise return karta he jiske liye hame then aur catch banana pada, agar api fetch ho jata he toh ham use print kar rhe he nahi toh ham error print kar rhe he
+
+// Ab aage hamne api me data ko add kese karna he wo dekha he,matlab api me data add nahi hota he, data add database me hota he with the help of api, Hamne axios ki help se post method chalaya he jo ki 2 parameters leta he, pehla he api aur dusra he ek object jisme ham key value ke pair me data add kar sakte he, ham button ke onClick par ek function chala rhe he addproducts ka agar data add ho gaya toh print ho jyga nahi toh error aa jyga
+
+----------------------------------------------------------------
+
+import React, { useState } from "react";
+import axios from "axios";
+
+const App = () => {
+
+  const [products, setProducts] = useState([]);
+
+  const getProducts = () => {
+    const api = "https://fakestoreapi.com/products";
+
+    axios.get(api).then(products => {
+      console.log(products);
+      setProducts(products.data);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  const addProducts = () => { 
+    const api = "https://fakestoreapi.com/products";
+
+    axios.post(api,{
+      title: 'Shailendra',
+      price: 13.5,
+      description: 'lorem ipsum set',
+      image: 'https://i.pravatar.cc',
+      category: 'electronic' 
+    }).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  console.log(products)
+  return <div className="p-[5%]">
+    <button onClick={getProducts} className="px-2 py-1 rounded bg-red-300">Call product api</button>
+    <br /><br />
+    <button onClick={addProducts} className="px-2 py-1 rounded bg-red-300">add product api</button>
+    <hr className="my-10"/>
+    <ul>
+      {products.length > 0 ? products.map(p => <li className="px-4 py-2 bg-red-300 rounded mb-2">{p.title}</li>) : <h1>Loading...</h1>}
+    </ul>
+  </div>
+}
+
+export default App;
+
+// again a simple code bas ek useState banaya he jo ki initially empty he aur data aane ke baas hamne usme objects ko fill kardia he
+
+-Hook useEffect() Lifecycle method
+
+// Ab isme dikkat ye he ki hame data tab mil rha hr jab ham button par click kar rhe he par actual me hame daata turant chahiye he jese ki page load ho jy toh waha ham useEffect ka use karenge
+// Ab scene ye he ki hame cheezon ko apnme aap call kar dena he jese hi page load ho, par ab ham isse achieve kesde karenge, ham isse achieve karenge with the help of useEffect()
+
+// Ab hamare paas 3 tarah ki Lifecycle method hoti he-
+//1. Component mount - creation
+//2. Component Update - Update component when useState changes
+//3. Component unmount - Deletion
+
+// useEffect ek react Hook he jiska meaning ham uper discuss kar chuke he, ab ye hame mainly 2 parameters deta he jisme pehla he ek callback aur dusra he ek array
+
+// useEffect hamari lifecycle method ka implementation he jo ki diya jata he react ke dwara aur react ke dwara hi call kiya jata he kab kab- Component create hone par, Component delete hone par, aur Component update hone par
+
+useEffect(() => {
+        console.log("Services Component is Created");
+    } )
+
+// Uske bad abhi tak hamne jo kiya he wo bas create hone ke liye he chalega delete hone par nahi chalega, ab agar hame delete par bhi chalana he toh hame return lagana padega jo ki again leta he ek callBack aur tab chalta he jab component hota he
+
+useEffect(() => {
+        console.log("Services Component is Created");
+
+        return () => {
+            console.log("Services Component is Destroyed");
+        }
+    } )
+
+----------------------------------------------------------------
+
+---***YAHA ME SARI FILE PASTE KAR RHA HU EK EK KARKE SECTION NO. 14 KI***---
+
+----------------------------------------------------------------
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { BrowserRouter } from 'react-router-dom' 
+
+createRoot(document.getElementById('root')).render(
+
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+
+)
+----------------------------------------------------------------
+import React, { useState } from "react";
+import axios from "axios";
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Show from "./components/Show";
+import Services from "./components/Services";
+
+const App = () => {
+
+  return <div className="p-[5%]">
+    <nav className="flex justify-center gap-10">
+      <Link to="/">Home</Link>
+      <Link to="/services">Services</Link>
+      <Link to="/show">Show</Link>
+    </nav>
+    <hr />
+    <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="/show" element={<Show />}></Route>
+      <Route path="/services" element={<Services />}></Route>
+    </Routes>
+  </div>
+}
+
+export default App;
+
+// Abhi ham fetch Api padh rhe he jisse ham axios ki help se kar sakte he,
+// isme hamne ek api ko ek const variable me save kr liya he aur ham axios se use use kar rhe he, Ab Axios hame ek get method deta he jiski help se ham kisi bhi api ko fecth kar sakte he, ab ye mthod hame ek promise return karta he jiske liye hame then aur catch banana pada, agar api fetch ho jata he toh ham use print kar rhe he nahi toh ham error print kar rhe he
+
+// Ab aage hamne api me data ko add kese karna he wo dekha he,matlab api me data add nahi hota he, data add database me hota he with the help of api, Hamne axios ki help se post method chalaya he jo ki 2 parameters leta he, pehla he api aur dusra he ek object jisme ham key value ke pair me data add kar sakte he, ham button ke onClick par ek function chala rhe he addproducts ka agar data add ho gaya toh print ho jyga nahi toh error aa jyga
+
+// Ab isme dikkat ye he ki hame data tab mil rha hr jab ham button par click kar rhe he par actual me hame daata turant chahiye he jese ki page load ho jy toh waha ham useEffect ka use karenge
+// Ab scene ye he ki hame cheezon ko apnme aap call kar dena he jese hi page load ho, par ab ham isse achieve kesde karenge, ham isse achieve karenge with the help of useEffect()
+
+// Ab hamare paas 3 tarah ki Lifecycle method hoti he-
+//1. Component mount - creation
+//2. Component Update - Update component when useState changes
+//3. Component unmount - Deletion
+
+// useEffect ek react Hook he jiska meaning ham uper discuss kar chuke he, ab ye hame mainly 2 parameters deta he jisme pehla he ek callback aur dusra he ek array
+
+// useEffect hamari lifecycle method ka implementation hge jo ki diya jata he react ke dwara aur react ke dwara hi call kiya jata he kab kab- Component create hone par, Component delete hone par, aur Component update hone par
+
+// Uske bad abhi tak hamne jo kiya he wo bas create hone ke liye he chalega delete hone par nahi chalega, ab agar hame delete par bhi chalana he toh hame return lagana padega jo ki again leta he ek callBack aur tab chalta he jab component hota he
+
+----------------------------------------------------------------
+
+import React, { useEffect } from "react";
+
+const Services = () => {
+
+    useEffect(() => {
+        console.log("Services Component is Created");
+
+        return () => {
+            console.log("Services Component is Destroyed");
+        }
+    } )
+
+    return <div>Services</div>
+}
+
+export default Services;
+
+----------------------------------------------------------------
+
+import React from "react";
+
+const Home = () => {
+    return <div>Home</div>
+}
+
+export default Home;
+
+----------------------------------------------------------------
+
+import React, { useState } from "react";
+import axios from "axios";
+
+const Show = () => {
+  const [products, setProducts] = useState([]);
+
+  const getProducts = () => {
+    const api = "https://fakestoreapi.com/products";
+
+    axios
+      .get(api)
+      .then((products) => {
+        console.log(products);
+        setProducts(products.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return (
+    <>
+      <button onClick={getProducts} className="px-2 py-1 rounded bg-red-300">
+        Call product api
+      </button>
+      <br />
+
+      <ul>
+        {products.length > 0 ? (
+          products.map((p) => (
+            <li key={p.id} className="px-4 py-2 bg-red-300 rounded mb-2">{p.title}</li>
+          ))
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </ul>
+    </>
+  );
+};
+
+export default Show;
+
+----------------------------------------------------------------
+
+************************************************************************************************
+                                Section 15: useEffect() on state change
+************************************************************************************************
+
+
+----------------------------------------------------------------
+
+---***YAHA ME SARI FILE PASTE KAR RHA HU EK EK KARKE SECTION NO. 15 KI***---
+
+----------------------------------------------------------------
+
+import axios from "../utils/axios";
+import React, { useEffect, useState } from "react";
+
+const Services = () => {
+    const [first, setfirst] = useState("this is normal data");
+    const [second, setsecond] = useState("this is very large data");
+
+
+    const getusers = () => {
+    
+        axios
+          .get("/users")
+          .then((users) => {
+            console.log(users)
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+    
+      useEffect(() => {
+        getusers();
+      },[]);
+
+
+    useEffect(() => {
+        console.log("Services Component is Created");
+
+        return () => {
+            console.log("Services Component is Destroyed");
+        }
+    },[second])
+
+    return <div>
+        <h1>{first}</h1>
+        <button onClick={() => setfirst("Normal data has been changed")} className="bg-red-200 p-2 mb-10 rounded">Change Normal Data</button>
+
+        <h1>{second}</h1>
+        <button onClick={() => setsecond("Large data has been changed")} className="bg-blue-200 p-2 mb-10 rounded">Change Large Data</button>
+    </div>
+}
+
+export default Services;
+
+// Abhi yaha par ham updation ki baat kar rahe he, ham dekh rhe he ki jese hi ham dono me se koi bhi button par click kar rhe he toh service component me pehle destroy ho rha he aur turant hi create ho rha he
+// Ab ek cheez hoti he reconsilation- isse aese samjhte he ki , ab hamare paas agar ek component he aur uske agar koi bhi chote hisse me chaneg hota he toh pura component render nhi hota ha balki sirf wo wala tag update kar diya jata he, sath hi sath agar bahut bada agar chaneg hota he toh pura component render kiya jata he.
+// aur ab hamare uper jo ho rha he usme har case me sirf re rendering hi chal rha he, hame bas wahi fix karna he, ussey ham aese karenge ki agar bahut jyda change ho rha he toh re-rendering chala do, nahi toh updation chala do
+
+// Component updation = component deletion + component creation
+
+//Note: agar useEffect bhul gye toh backup he; useEffect hota he ek hook jo ki component ke creation or deletion par chalte he, creation par main code chalta he aur deletio par return wala code chalta he
+
+// Bas ek chota sa change karna he aue used effect ke sath , lagaker ek [] brackes yahi arrayu laga dena he uske baad use effect bolega ki me kisi bhi halat me re rendering nhi karunga
+
+// useEffect(() => {
+//     console.log("Services Component is Created");
+
+//     return () => {
+//         console.log("Services Component is Destroyed");
+//     }
+// },[]) // Like this way
+// Itna bas kar dene de ab hamara component jabardasti baar baar re render nahi hoga aur bas updation hoga
+
+// Ab ek aur naya case banta he ki agar hame baut chota si jagah change karna he fir toh theek he par ham chahte he ki jo large data wali button par jab ham click kare toh pura component re render ho jy toh ham uss array me second pass kar denge iska matlab yeh he ki- jab bhi koi changes aay toh large data change wali button par click hone par pure component ko re render kar dena, aur ye sirf large data wali button ke sth hoga duari wali ke sath nhi kyuki hamne uske sath nahi lagaya he
+
+// useEffect(() => {
+//     console.log("Services Component is Created");
+
+//     return () => {
+//         console.log("Services Component is Destroyed");
+//     }
+// },[second])
+
+// Toh ab hamne ye seekha ki jese hi ham service wale component ko openkar rhe he kese turant ki useEffect ki help se component creation deletion chal jaa rha he, aur yahi toh hamari problem thi jo ki resolve ho gyi, yani ham jese hi component par jay aur API call ho jy, toh iske liye ham useEffect ka use karen ge Show.jsx me
+
+// Ab axios ke sath ek dikkat he ki ham usse jitni baar alag alag banate he utni hi baar uske reference create hote he jo ki aage chalke hame dikkat dete he kyuki reference hi same nhi hota he, toh iske liye ham ek alg file bana lete he axios ke liye aur usse ham waha waha de dete he jaha jaha axios use hora he. Isey karne ke liye hemne ek naya folder banaya he utils naam ka, aur uske ander ek file banayi he axios.jsx 
+
+------------------------------------------------------------
+import React, { useEffect, useState } from "react";
+import axios from "../utils/axios";
+
+const Show = () => {
+  const [products, setProducts] = useState([]);
+
+  const getProducts = () => {
+
+    axios
+      .get("/products")
+      .then((products) => {
+        console.log(products);
+        setProducts(products.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getProducts();
+  },[]);
+
+  return (
+    <>
+      {/* <button onClick={getProducts} className="px-2 py-1 rounded bg-red-300">
+        Call product api
+      </button> */}
+      <br />
+
+      <ul>
+        {products.length > 0 ? (
+          products.map((p) => (
+            <li key={p.id} className="px-4 py-2 bg-red-300 rounded mb-2">{p.title}</li>
+          ))
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </ul>
+    </>
+  );
+};
+
+export default Show;
+
+// Ab jese ki hamne baat kari thi ki ham isme useEffect ka use karke, jese hi Component open hoga aur turant data aa jyga toh isme same wahi ho rha he yani, useEffect tab chalehga jab Component open hoga, aur jese hi Component open hoga ham getProducts ko call kar de rhe he aur getProduct Api se data laker turant useState ko change kar dega aur update hote hi useState me naya data aa jyga jiske karan ki wo hame show ho jyga
+
+---------------------------------------------------------
+
+import axios from "axios";
+
+const instance = axios.create({
+    baseURL:"https://fakestoreapi.com/"
+});
+
+export default instance;
+
+// Hamne yaha par ek axios ko banaker rakh liya he ab har jagah ham bas iska hi path provide kar denge isse use karne k liye.
+
+-----------------------------------------------------------
+
+************************************************************************************************
+                                Section 16: React Context API
+************************************************************************************************
+
+- Iski need kyu padi- Ab hame pata he ki jab bhi ham useStata wagera ka use karte he toh usse ham sirf ussi component me change kar sakte he jaha ki wo create kiya gaya he, dusri jagah ussey change nahi kar sakte, Aur hame agar uska data dusre child component ko bhejna he toh with the help wo prop ham uss data ko send kar sakte he, But ye ek bahut badi process he.
+// Aur ye props ko parent ko child bhejne ki process ko ham props drillig bolte he, isme sirf ham ussey unidirection hi bhej sakte he.
+Ab isme kya hota he agar mere pas ek parent he aur uska ek child he aur uska ek aur child he jisse ki data chahiye par me ussey direct data send nahi kar sakta, balki muje uss beech wale child ko data pehle bhejna padega jo ki fir further aaage data bhejega, par hame uss component ko data bhjejne ki need hi nahi thi tab bhi hame usey data bhejna pada.
+Issi condition ko overcome kiya jata he with the help of React Context API\
+
+Now ab ham kya krenge ki data ko ek alag jagah rakh denge aur sare component ko data se bind kar denge, toh jissey bhi data chahiye hoga wo directly data le sakta he, Aur ham ye bhi bol sakte he ki hamn pure application ko context se wrap kar denge
+
+<Context>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+</Context>
+
+Context banaker ke hamne pure main me wrap kar diya he aur Context me jaker hamne uske child ko return kiya he nhi toh hame sabse phle context hi dikhega
+
+----------------------------------------------------------------
+
+---***YAHA ME SARI FILE PASTE KAR RHA HU EK EK KARKE SECTION NO. 16 KI***---
+
+----------------------------------------------------------------
+
+Main.jsx
+
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import Context from "./context/Context.jsx";
+
+createRoot(document.getElementById("root")).render(
+  <Context>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Context>
+);
+
+----------------------------------------------------------------
+
+App.jsx
+
+import React from "react";
+import Home from "./components/Home";
+import { Link, Route, Routes } from "react-router-dom";
+import User from "./components/User";
+import About from "./components/About";
+import UserDetails from "./components/UserDetails";
+
+const App = () => {
+  return (
+    <div className="p-1 container w-1/2 m-auto ">
+      <nav className="my-10 flex justify-center gap-10">
+        <Link to="/">Home</Link>
+        <Link to="/user">User</Link>
+        <Link to="/about">About</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/user/:id" element={<UserDetails />} />
+      </Routes>
+    </div>
+  );
+};
+
+export default App;
+
+// Me Lecture 16 ki sari details issi file me likh rha hu,
+// isme ab ham Aur bhi Components bana rhe he jese ek Home banay he aur user ans UserDetails banay he, Aur ab ham yaha par parent child bana rhe he ki App ka cjhild hoga Home, Home ka child hoga User aur User  ka child hoga UserDetails
+
+//
+------------------------------------------------------------------------
+
+User.jsx
+
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../context/Context";
+
+const User = () => {
+
+    const data = useContext(UserContext);
+    console.log(data)
+
+    return <div>
+        <h1 className="text-3xl">User List</h1>
+        <div className="w-1/2 mt-10 flex flex-col">{data.user.map((u, index) => (
+            <Link to={`/user/${u.id}`} key={index} className="bg-blue-100 p-3 mt-5">{u.username}</Link>
+        ))}
+        </div>
+    </div>
+}
+
+export default User;
+
+---------------------------------------------------------------
+
+Context.jsx
+
+import React, { createContext, useState } from "react";
+
+export const UserContext = createContext();
+const Context = (props) => {
+  const [user, setUser] = useState([
+    { id: 0, username: "John doe", city: "USA" },
+    { id: 1, username: "Harsh Pathak", city: "India" },
+    { id: 2, username: "Rahul Patel", city: "Australia" },
+  ]);
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {props.children}
+    </UserContext.Provider>
+  );
+};
+
+export default Context;
+--------------------------------------------------------------
+UserDetails.jsx
+
+import React, { useContext } from "react";
+import { UserContext } from "../context/Context";
+import { useNavigate, useParams } from "react-router-dom";
+
+const UserDetails = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const { user } = useContext(UserContext);
+
+    return <div>
+        <h1 className="text-2xl font-serif bg-blue-100 text-center rounded-lg mb-3">{user[id].username}</h1>
+        <h3 className="text-xl text-center bg-red-100 rounded-lg">{user[id].city}</h3>
+        <button onClick={() => navigate(-1)} className="px-2 py-1 bg-black text-white mt-5 rounded-lg">Go back</button>
+    </div>
+}
+
+export default UserDetails;
+
+-------------------------------------------------------------------------------
+Home.jsx
+import React from "react";
+
+
+const Home = () => {
+    return <div>
+        Home
+    </div>
+}
+
+export default Home;
+.......
+
+************************************************************************************************
+                                Section 17: Context Api Revisit
+************************************************************************************************
+
+// Nothing much just another revision of last episode
+
+----------------------------------------------------------------
+
+---***YAHA ME SARI FILE PASTE KAR RHA HU EK EK KARKE SECTION NO. 17 KI***---
+
+----------------------------------------------------------------
+
+Main.jsx
+
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import UserContext from "./utils/context.jsx";
+
+createRoot(document.getElementById("root")).render(
+  <UserContext>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </UserContext>
+);
+
+--------------------------------------------------------------
+
+App.jsx
+
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Users from "./components/Users";
+
+const App = () => {
+  return (
+    <div className="w-[80%] mt-5 p-5 mx-auto bg-zinc-100">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/users/:id" element={<Users />} />
+      </Routes>
+    </div>
+  );
+};
+
+export default App;
+----------------------------------------------------------------
+
+Home.jsx
+
+import React, { useContext } from "react";
+import { userContextData } from "../utils/context";
+import { Link } from "react-router-dom";
+
+const Home = () => {
+  let [users] = useContext(userContextData);
+
+  return users ? (
+    <ul>
+      {users.map((users) => (
+        <li className="text-blue-300 list-decimal ml-4" key={users.id}>
+          <Link to={`/users/${users.id}`}>
+            <span className="text-xl hover:text-blue-600">{users.name}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <h1 className="text-3xl text-red-300 text-center">Loading...</h1>
+  );
+};
+
+export default Home;
+ ----------------------------------------------------------
+
+ import React, { useContext } from 'react'
+import { userContextData } from '../utils/context';
+import { Link, useParams } from 'react-router-dom';
+
+const Users = () => {
+    const { id } = useParams();
+    let [users] = useContext(userContextData);
+    let user = users && users.find((user) => user.id === +id);
+    console.log(user);
+    
+  return users ? <div>
+    <h1 className='text-2xl text-orange-700 mb-5'>{user.name}</h1>
+    <p className='text-zinc-500'>{user.id}</p>
+    <p className='text-zinc-500'>{user.email}</p>
+    <p className='text-zinc-500'>{user.website}</p>
+    <p className='text-zinc-500 mb-5'>{user.phone}</p>
+    <hr className='mt-3 mb-3'/>
+    <Link className='bg-black text-white rounded-lg px-3 py-2 text-sm' to="/">Back</Link>
+  </div> : <h1 className="text-3xl text-red-300 text-center">Loading...</h1>;
+}
+
+export default Users
+---------------------------------------------------------------
+
+context.jsx
+
+import axios from 'axios';
+import React, { createContext, useEffect, useState } from 'react'
+export const userContextData = createContext(null);
+
+const UserContext = (props) => {
+    const [users, setusers] = useState(null);
+
+  const getusers = async () => {
+    try{
+      const { data }  = await axios.get(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      setusers(data);
+    }catch(error){
+      console.log(error);
+    }
+  };
+
+  useEffect (() => {
+    getusers();
+  },[])
+  return (
+    <userContextData.Provider value={[users, setusers]}>
+    <div>{props.children}</div>
+    </userContextData.Provider>
+  )
+}
+
+export default UserContext
+
+---------------------------------------------------------------------------------------------------------------
+
+AND THAT'S ALL, WE FINISHED WITH GREAT WORK IT'S PROJECT TIME.
+
+---------------------------------------------------------------------------------------------------------------
