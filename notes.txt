@@ -83,6 +83,7 @@ export function Cart(){
 
 export function adb(){
 
+
  }
 
 import {Cart, adb} from "./script2"
